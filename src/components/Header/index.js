@@ -1,15 +1,15 @@
+import ToggleSwitch from '../../common/ToggleSwitch';
 import './styles.scss';
 
-const Header = ({ toggleTheme, lightTheme }) => {
-  const theme = lightTheme ? 'Light Theme' : 'Dark Theme';
+const Header = ({ toggleTheme, theme }) => {
+  const themeName = theme ? 'Light Theme' : 'Dark Theme';
   return (
     <div className='header-wrapper'>
-      <div>Giphy Store</div>
-      <span>{theme}</span>
-      <label className="switch">
-        <input type="checkbox" onClick={toggleTheme} />
-        <span className="slider round"></span>
-      </label>
+      <div className='title'>GIPHY STORE</div>
+      <div className='theme-container'>
+        <div className='theme-container-name'>{themeName}</div>
+        <ToggleSwitch toggleTheme={toggleTheme} />
+      </div>
     </div>
   )
 }

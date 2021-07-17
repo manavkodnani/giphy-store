@@ -29,7 +29,7 @@ const App = () => {
       { id: `${elem?.id}${index}`, image: elem?.images?.fixed_width_downsampled?.url })
     );
     if (Array.isArray(formattedData)) {
-      setData([ ...data, ...formattedData]);
+      setData([...data, ...formattedData]);
     }
     setLoading(false);
     setLoadMore(false);
@@ -52,12 +52,14 @@ const App = () => {
   return (
     <div className="App">
       <div className={themeClass}>
-        <div className="top-container">
-          <Header toggleTheme={toggleTheme} theme={lightTheme} />
-          <SearchGif />
+        <div className='app-container'>
+          <div className="top-container">
+            <Header toggleTheme={toggleTheme} theme={lightTheme} />
+            <SearchGif />
+          </div>
+          {loading ? <Loader /> : null}
+          <DisplayGrid data={data} fetchMoreData={fetchMoreData} loadMore={loadMore} />
         </div>
-        {loading ? <Loader /> : null}
-        <DisplayGrid data={data} fetchMoreData={fetchMoreData} loadMore={loadMore} />
       </div>
     </div>
   );

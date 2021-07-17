@@ -19,7 +19,7 @@ const DisplayGrid = ({ data, fetchMoreData, loadMore }) => {
           {data?.map((elem) => <GifCard key={elem?.id} id={elem?.id} url={elem?.image} />)}
         </InfiniteScroll>
       </Suspense>
-        <Loader />
+        {loadMore ? <Loader /> : null}
     </div>
   )
 }

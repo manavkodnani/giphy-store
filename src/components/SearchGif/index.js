@@ -1,6 +1,10 @@
+import './styles.scss';
+
 const SearchGif = () => {
   return (
-    <div>Search gif</div>
+    <div className='search-wrapper'>
+      <input type='search' placeholder='Search GIFs' />
+    </div>
   )
 }
 
