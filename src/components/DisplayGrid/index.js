@@ -5,7 +5,7 @@ const DisplayGrid = ({ data }) => {
 
   console.log(data);
   return (
-    <div>
+    <div className='grid-wrapper'>
       {data?.map((elem) => <GifCard key={elem?.id} id={elem?.id} url={elem?.image} />)}
     </div>
   )

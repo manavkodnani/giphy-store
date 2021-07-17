@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  .dark-theme, .dark-theme .top-container {
+    background-color: black;
+    color: white;
+  }
+  .light-theme, .light-theme .top-container {
+    background-color: white;
+    color: black;
+  }
+  .top-container {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+  }
+}
