@@ -1,7 +1,10 @@
 .grid-wrapper {
+    height: 100%;
+    overflow: auto;
     column-width: 12rem;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    position: relative;
 }

@@ -1,12 +1,25 @@
+import { lazy, Suspense } from 'react';
 import GifCard from '../GifCard';
+import Loader from '../../common/Loader';
 import './styles.scss';
 
-const DisplayGrid = ({ data }) => {
+const InfiniteScroll = lazy(() => import('react-infinite-scroll-component'));
 
-  console.log(data);
+const DisplayGrid = ({ data, fetchMoreData, loadMore }) => {
+
   return (
     <div className='grid-wrapper'>
-      {data?.map((elem) => <GifCard key={elem?.id} id={elem?.id} url={elem?.image} />)}
+      <Suspense fallback={<div />}>
+        <InfiniteScroll
+          dataLength={data?.length}
+          next={fetchMoreData}
+          hasMore
+          scrollableTarget="grid-wrapper"
+        >
+          {data?.map((elem) => <GifCard key={elem?.id} id={elem?.id} url={elem?.image} />)}
+        </InfiniteScroll>
+      </Suspense>
+        <Loader />
     </div>
   )
 }
