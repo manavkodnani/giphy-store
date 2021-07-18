@@ -1,9 +1,9 @@
 import './styles.scss';
 
-const SearchGif = () => {
+const SearchGif = ({ searchQuery, onSearchGif }) => {
   return (
     <div className='search-wrapper'>
-      <input type='search' placeholder='Search GIFs' />
+      <input type='search' placeholder='Search GIFs' value={searchQuery} onChange={onSearchGif} />
     </div>
   )
 }
