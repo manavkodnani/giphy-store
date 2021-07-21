@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import './styles.scss'
 
 const Loader = () => {
@@ -13,4 +14,10 @@ const Loader = () => {
   )
 }
 
-export default Loader;
+const MemoizedLoader = () => {
+  return useMemo(() => {
+    return <Loader />
+  }, []);
+};
+
+export default MemoizedLoader;

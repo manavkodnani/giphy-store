@@ -3,6 +3,7 @@ import playImg from '../../assets/play.png';
 import pauseImg from '../../assets/pause.png';
 
 const GifCard = ({ id, playUrl, pauseUrl, play, handleToggleGif }) => {
+
   const url = play ? playUrl : pauseUrl;
   const imgAltText = play ? 'Pause' : 'Play';
   const currentStateImg = play ? pauseImg : playImg;

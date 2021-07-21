@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import ToggleSwitch from '../../common/ToggleSwitch';
 import './styles.scss';
 
@@ -14,4 +15,10 @@ const Header = ({ toggleTheme, theme }) => {
   )
 }
 
-export default Header;
+const MemoizedHeader = (props) => {
+  return useMemo(() => {
+    return <Header toggleTheme={props.toggleTheme} theme={props.theme} />
+  }, [props.toggleTheme, props.theme])
+}
+
+export default MemoizedHeader;

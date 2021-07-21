@@ -18,7 +18,6 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [hasMore, setHasMore] = useState(false);
 
-
   const fetchGifs = async (url) => {
     try {
       const response = await fetch(url);
@@ -82,26 +81,26 @@ const App = () => {
     []
   );
 
-  const toggleTheme = (e) => {
+  const toggleTheme = useCallback((e) => {
     setLightTheme(e.target.checked);
-  }
+  }, []);
 
   const fetchMoreData = () => {
     setLoadMore(true);
-  }
+  };
 
-  const onSearchGif = (e) => {
+  const onSearchGif = useCallback((e) => {
     setSearchQuery(e.target.value);
-  }
+  }, []);
 
-  const handleToggleGif = (id) => {
+  const handleToggleGif = useCallback((id) => {
     const index = data?.findIndex((elem) => elem.id === id);
     if (index > -1) {
       const gifData = [ ...data ];
       gifData[index].play = !gifData[index].play;
       setData(gifData);
     }
-  }
+  }, [data]);
 
   const themeClass = lightTheme ? 'light-theme' : 'dark-theme';
 
@@ -113,8 +112,8 @@ const App = () => {
             <Header toggleTheme={toggleTheme} theme={lightTheme} />
             <SearchGif searchQuery={searchQuery} onSearchGif={onSearchGif} />
           </div>
-          {loading ? <Loader /> : null}
-          {error ? <div>{error}</div> :
+          {loading ? <Loader /> : 
+          error ? <div>{error}</div> :
             <DisplayGrid data={data} fetchMoreData={fetchMoreData} loadMore={loadMore} hasMore={hasMore} handleToggleGif={handleToggleGif} />}
         </div>
       </div>

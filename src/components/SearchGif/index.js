@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import './styles.scss';
 
 const SearchGif = ({ searchQuery, onSearchGif }) => {
@@ -8,4 +9,10 @@ const SearchGif = ({ searchQuery, onSearchGif }) => {
   )
 }
 
-export default SearchGif;
+const MemoizedSearchGif = (props) => {
+  return useMemo(() => {
+    return <SearchGif searchQuery={props.searchQuery} onSearchGif={props.onSearchGif} />
+  }, [props.searchQuery, props.onSearchGif])
+}
+
+export default MemoizedSearchGif;
