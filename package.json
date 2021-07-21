@@ -1,5 +1,6 @@
 {
   "name": "treebo-gif-app",
+  "author": "Manav Kodnani",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
