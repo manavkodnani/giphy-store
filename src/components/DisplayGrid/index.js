@@ -5,7 +5,7 @@ import './styles.scss';
 
 const InfiniteScroll = lazy(() => import('react-infinite-scroll-component'));
 
-const DisplayGrid = ({ data, fetchMoreData, loadMore }) => {
+const DisplayGrid = ({ data, fetchMoreData, loadMore, hasMore }) => {
 
   return (
     <div className='grid-wrapper'>
@@ -13,7 +13,7 @@ const DisplayGrid = ({ data, fetchMoreData, loadMore }) => {
         <InfiniteScroll
           dataLength={data?.length}
           next={fetchMoreData}
-          hasMore
+          hasMore={!loadMore && hasMore}
           scrollableTarget="grid-wrapper"
         >
           {data?.map((elem) => <GifCard key={elem?.id} id={elem?.id} url={elem?.image} />)}
