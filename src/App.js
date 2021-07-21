@@ -24,7 +24,12 @@ const App = () => {
       const response = await fetch(url);
       const responseData = await response.json();
       const formattedData = responseData?.data.map((elem, index) => (
-        { id: `${elem?.id}${index}`, image: elem?.images?.fixed_width_downsampled?.url })
+        {
+          id: `${elem?.id}${index}`,
+          image: elem?.images?.fixed_width_downsampled?.url,
+          stillImage: elem?.images?.fixed_width_still?.url,
+          play: true,
+        })
       );
       const responseMsg = responseData?.meta?.msg;
       if (Array.isArray(formattedData) && responseMsg === 'OK') {
@@ -89,6 +94,15 @@ const App = () => {
     setSearchQuery(e.target.value);
   }
 
+  const handleToggleGif = (id) => {
+    const index = data?.findIndex((elem) => elem.id === id);
+    if (index > -1) {
+      const gifData = [ ...data ];
+      gifData[index].play = !gifData[index].play;
+      setData(gifData);
+    }
+  }
+
   const themeClass = lightTheme ? 'light-theme' : 'dark-theme';
 
   return (
@@ -101,7 +115,7 @@ const App = () => {
           </div>
           {loading ? <Loader /> : null}
           {error ? <div>{error}</div> :
-            <DisplayGrid data={data} fetchMoreData={fetchMoreData} loadMore={loadMore} hasMore={hasMore} />}
+            <DisplayGrid data={data} fetchMoreData={fetchMoreData} loadMore={loadMore} hasMore={hasMore} handleToggleGif={handleToggleGif} />}
         </div>
       </div>
     </div>

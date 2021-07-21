@@ -1,6 +1,16 @@
 .gif-card-wrapper {
   display: inline-block;
-  border: 1px solid black;
   margin: 5px;
   border-radius: 5px;
+  position: relative;
+  &-play {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background: #efefef;
+    z-index: 1;
+  }
 }
